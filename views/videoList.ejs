@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Trending Videos</title>
+</head>
+
+<body>
+    <div class="container overflow-hidden">
+        <h3 class="video-head">Trending Youtube Videos</h3>
+        <button type="button" class="btn btn-primary" id="reloadButton" onClick="reloadVideoList()">Refresh</button>
+        <hr>
+        <div class="row video-list" id="videoList">
+            <% if (videos.length> 0) { %>
+                <% for (let video of videos) { %>
+                    <div class="col-lg-3 col-md-4 card-col">
+                        <div class="card h-100">
+                            <img src="<%= video.videoThumbnail %>" class="card-img-top" alt="video-thumbnail">
+                            <div class="card-body">
+                                <h6 class="card-title">
+                                    <%= video.videoTitle %>
+                                </h6>
+                                <a href="/videoDetails/<%= video.videoId %>" id="<%= video.videoId %>"
+                                    class="stretched-link"></a>
+                            </div>
+                            <div class="card-footer">
+                                <span class="text-muted">
+                                    <%= video.channelTitle %>
+                                </span>
+                                <span class="text-muted">&#124;</span>
+                                <span class="text-muted">
+                                    <%= video.videoPublishedTime %>
+                                        </sapn>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+                <% } else { %>
+                    <h1>Click Refresh Page To Load Videos</h1>
+                <% } %>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <!-- <div class="spinner-border" role="status" id="loading">
+        </div> -->
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
