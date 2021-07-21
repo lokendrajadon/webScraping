@@ -34,7 +34,7 @@ app.use('/videoDetails',express.static(path.join(__dirname, 'public')));
 const routes = require('./routes/videoRoutes')
 
 app.use(routes)
-const port = 8080
+const port = process.env.PORT || 8080
 app.listen(port, (req, res) => {
     console.log(`server is running on this port ${port}`)
 })
