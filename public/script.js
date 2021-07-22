@@ -4,9 +4,14 @@ const videosListUpdate = `${videosAPi}videosListUpdate`;
 const videoDetails = `${videosAPi}videoDetails/`;
 const options = {};
 
+document.addEventListener("DOMContentLoaded", () => {
+    options.method = "PUT";
+    fetchVideoList(videosListUpdate, options);
+});
+
 async function fetchVideoList(apiUrl, options) {
     try {
-        document.getElementById('reloadButton').disabled = true;
+        document.getElementById('reloadButton').disabled = true;        
         document.getElementById("videoList").innerHTML = '';
         let response = await fetch(apiUrl, options);
         if (!response.ok) {
@@ -34,13 +39,15 @@ async function fetchVideoList(apiUrl, options) {
             }
             document.getElementById("videoList").innerHTML = videoCards;
             document.getElementById('reloadButton').disabled = false;
+            document.getElementById('loading').style.display = 'none';
+
         }
     } catch (error) {
         console.log(error);
     }
 }
-
-function reloadVideoList() {
+document.getElementById("reloadButton").addEventListener("click", function() {
+    document.getElementById('loading').style.display = 'block';
     options.method = "PUT";
     fetchVideoList(videosListUpdate, options);
-}
+})

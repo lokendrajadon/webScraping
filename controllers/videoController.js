@@ -28,9 +28,9 @@ exports.videoDetails = async (req, res, next) => {
             videoId: req.params.videoId
         }).lean();
         if (videoDetails) {
-            res.render('videoDetails',{  
+            res.render('videoDetails', {
                 message: "Video Details fetched successfully!",
-                    video: videoDetails
+                video: videoDetails
             })
         } else {
             res.status(400).json({
@@ -61,6 +61,7 @@ exports.videosListUpdate = async (req, res, next) => {
         const trendDataList = trendDataFiltered.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.
             content.sectionListRenderer.contents;
         const videoDetails = [];
+
         for (let i = 0; i < trendDataList.length; i++) {
             for (let j = 0; j < trendDataList[i].itemSectionRenderer.contents.length; j++) {
                 for (let k = 0; k < trendDataList[i].itemSectionRenderer.contents[j].shelfRenderer.content.expandedShelfContentsRenderer.items.length; k++) {
@@ -82,7 +83,6 @@ exports.videosListUpdate = async (req, res, next) => {
             }
 
         }
-
         const videosList = await Video.find({}).lean();
         if (videosList.length) {
             for (let i = 0; i < videoDetails.length; i++) {
@@ -96,6 +96,8 @@ exports.videosListUpdate = async (req, res, next) => {
             await Video.insertMany(videoDetails)
         }
         const videoDetailsList = await Video.find({}).lean();
+        // console.log(videoDetailsList)
+
         res.status(201).json({
             message: "Videos added successfully!",
             videos: videoDetailsList

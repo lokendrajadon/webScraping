@@ -16,7 +16,7 @@
 <body>
     <div class="container overflow-hidden">
         <h3 class="video-head">Trending Youtube Videos</h3>
-        <button type="button" class="btn btn-primary" id="reloadButton" onClick="reloadVideoList()">Refresh</button>
+        <button type="button" class="btn btn-primary" id="reloadButton">Refresh</button>
         <hr>
         <div class="row video-list" id="videoList">
             <% if (videos.length> 0) { %>
@@ -48,9 +48,8 @@
                 <% } %>
         </div>
     </div>
-    <div class="d-flex justify-content-center">
-        <!-- <div class="spinner-border" role="status" id="loading">
-        </div> -->
+    <div class="d-flex justify-content-center loadingBar">
+        <div class="spinner-border" role="status" id="loading"></div>
     </div>
 </body>
 <script src="script.js"></script>
