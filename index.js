@@ -19,7 +19,7 @@ app.set('view engine', 'ejs')
 app.set('views', 'views')
 
 mongoose
-    .connect('mongodb+srv://webScraping:youtubeTrendingVideos@cluster0.luidb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+    .connect('mongodb://localhost:27017/youtubrTrending', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true
