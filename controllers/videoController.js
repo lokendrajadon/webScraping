@@ -62,9 +62,9 @@ exports.videosListUpdate = async (req, res, next) => {
         const videoDetails = [];
 
 // use this to check or remove the items error
-         for (let i = 0; i < 1; i++) {
+        //  for (let i = 0; i < 1; i++) {
             // use this for the original length trending videos
-        // for (let i = 0; i < trendDataList.length; i++) {
+        for (let i = 0; i < trendDataList.length; i++) {
             for (let j = 0; j < trendDataList[i].itemSectionRenderer.contents.length; j++) {
                 for (let k = 0; k < trendDataList[i].itemSectionRenderer.contents[j].shelfRenderer.content.expandedShelfContentsRenderer.items.length; k++) {
                     const videoDetailsPath = trendDataList[i].itemSectionRenderer.contents[j].shelfRenderer.content.
